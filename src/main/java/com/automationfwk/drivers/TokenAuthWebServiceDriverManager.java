@@ -1,0 +1,50 @@
+package com.automationfwk.drivers;
+
+import org.json.simple.JSONObject;
+
+import com.automationfwk.api.josnmodels.Token;
+import com.automationfwk.authentication.TokenAuthenticator;
+import com.automationfwk.config.josnmodels.EnvironmentConfigJsonModel;
+import com.automationfwk.util.ApiUtil;
+
+
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+
+public class TokenAuthWebServiceDriverManager extends WebServiceDriverManager
+{
+	private Token token;
+	
+	public TokenAuthWebServiceDriverManager(EnvironmentConfigJsonModel config) throws Exception
+	{
+		super(config);
+		token= TokenAuthenticator.getToken(config.getBaseUrl(), config.getTokenUrl(),
+				config.getUser().getUserName(),config.getUser().getPassword());
+		header.put("Authorization", "Bearer "+token);
+	}
+		
+	public Response createGetRequest(String endpoint)
+	{
+		return ApiUtil.createRequest(config.getBaseUrl(), Method.GET, endpoint,header);
+	}
+	
+	public Response cretePostRequest(String endpoint,JSONObject body)
+	{
+		return ApiUtil.createRequest(config.getBaseUrl(), Method.POST, endpoint,header,body);
+	}
+	
+	public Response createDeleteRequest(String endpoint)
+	{
+		return ApiUtil.createRequest(config.getBaseUrl(), Method.DELETE, endpoint,header);
+	}
+	
+	public Response createPutRequest(String endpoint,JSONObject body)
+	{
+		return ApiUtil.createRequest(config.getBaseUrl(), Method.PUT, endpoint,header,body);
+	}
+	
+	public Response createPatchRequest(String endpoint,JSONObject body)
+	{
+		return ApiUtil.createRequest(config.getBaseUrl(), Method.PUT, endpoint,header,body);
+	}
+}

@@ -4,8 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import com.automationfwk.base.BasePage;
 import com.automationfwk.config.josnmodels.EnvironmentConfigJsonModel;
-import com.automationfwk.pom.base.BasePage;
 import com.automationfwk.pom.components.BookstoreGrid;
 import com.automationfwk.pom.components.BookstoreHeader;
 import com.automationfwk.pom.components.BookstoreNavigation;

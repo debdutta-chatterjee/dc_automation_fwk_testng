@@ -1,4 +1,4 @@
-package com.automationfwk.pom.base;
+package com.automationfwk.base;
 
 import java.time.Duration;
 

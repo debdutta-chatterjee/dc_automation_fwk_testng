@@ -1,6 +1,5 @@
 package com.automationfwk.drivers;
 
-import org.json.simple.JSONObject;
 
 import com.automationfwk.api.josnmodels.Token;
 import com.automationfwk.authentication.TokenAuthenticator;
@@ -20,7 +19,7 @@ public class TokenAuthWebServiceDriverManager extends WebServiceDriverManager
 		super(config);
 		token= TokenAuthenticator.getToken(config.getBaseUrl(), config.getTokenUrl(),
 				config.getUser().getUserName(),config.getUser().getPassword());
-		header.put("Authorization", "Bearer "+token);
+		header.put("Authorization", "Bearer "+token.getToken());
 	}
 		
 	public Response createGetRequest(String endpoint)
@@ -28,7 +27,7 @@ public class TokenAuthWebServiceDriverManager extends WebServiceDriverManager
 		return ApiUtil.createRequest(config.getBaseUrl(), Method.GET, endpoint,header);
 	}
 	
-	public Response cretePostRequest(String endpoint,JSONObject body)
+	public Response createPostRequest(String endpoint,String body)
 	{
 		return ApiUtil.createRequest(config.getBaseUrl(), Method.POST, endpoint,header,body);
 	}
@@ -38,12 +37,12 @@ public class TokenAuthWebServiceDriverManager extends WebServiceDriverManager
 		return ApiUtil.createRequest(config.getBaseUrl(), Method.DELETE, endpoint,header);
 	}
 	
-	public Response createPutRequest(String endpoint,JSONObject body)
+	public Response createPutRequest(String endpoint,String body)
 	{
 		return ApiUtil.createRequest(config.getBaseUrl(), Method.PUT, endpoint,header,body);
 	}
 	
-	public Response createPatchRequest(String endpoint,JSONObject body)
+	public Response createPatchRequest(String endpoint,String body)
 	{
 		return ApiUtil.createRequest(config.getBaseUrl(), Method.PUT, endpoint,header,body);
 	}

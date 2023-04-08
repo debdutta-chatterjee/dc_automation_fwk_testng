@@ -3,8 +3,8 @@ package com.automationfwk.pom.components;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.automationfwk.base.BasePage;
 import com.automationfwk.config.josnmodels.EnvironmentConfigJsonModel;
-import com.automationfwk.pom.base.BasePage;
 
 public class BookstoreNavigation extends BasePage
 {

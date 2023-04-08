@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import com.automationfwk.config.josnmodels.EnvironmentConfigJsonModel;
 import com.automationfwk.config.josnmodels.UserConfigJsonModel;
+import com.automationfwk.constants.AuthenticationType;
 import com.automationfwk.constants.EnvironmentType;
 
 public class ConfigLoader 
@@ -39,10 +40,11 @@ public class ConfigLoader
 	{
 		UserConfigJsonModel user = new UserConfigJsonModel(loader.prop.get("username").toString(),
 				loader.prop.get("password").toString());
-		user.setUserId(loader.prop.get("userId").toString());
+		user.setUserId(loader.prop.get("userId").toString());		
 		
 		config = new EnvironmentConfigJsonModel(loader.prop.get("baseUrl").toString(), user);
 		config.setTokenUrl(loader.prop.get("tokenurl").toString());
+		config.setAuthType(AuthenticationType.valueOf(loader.prop.get("authType").toString()));
 		return config;
 	}
 }
